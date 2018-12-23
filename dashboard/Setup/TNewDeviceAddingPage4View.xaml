@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="HIO.Setup.TNewDeviceAddingPage4View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.Setup"
+             xmlns:Gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Gif:ImageBehavior.AnimatedSource="/HIO;component/Resources/tick2.gif"  
+               Gif:ImageBehavior.AnimateInDesignMode="True"
+               Gif:ImageBehavior.RepeatBehavior="1x"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Grid.Row="1" 
+               VerticalAlignment="Center"
+               StretchDirection="DownOnly" />
+        <!--<Image Source="/HIO;component/Resources/tick2.gif"/>-->
+        <TextBlock Text="Congratulation" VerticalAlignment="Top" Foreground="{DynamicResource HIOBrightFont}" Grid.Row="2" 
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="new device is added successfully" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+    </Grid>
+</UserControl>

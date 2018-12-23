@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="HIO.ViewModels.Accounts.TAccountItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             UseLayoutRounding="True"
+             Background="Transparent"
+             x:Name="root"
+             mc:Ignorable="d" 
+             Height="75" d:DesignWidth="500" >
+    <UserControl.Resources>
+        <ResourceDictionary Source="/HIO;component/Controls/TContextMenu.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Border CornerRadius="{Binding CornerRadius}"   Background="{Binding IsChecked,Converter={Ctrls:TBoolToBrushConverter TrueBrush={StaticResource HIOLineBright},FalseBrush={x:Null}}}">
+            <Grid Margin="10,0,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="32px"/>
+                </Grid.ColumnDefinitions>
+                <Ctrls:TCheckbox Grid.Column="0" IsChecked="{Binding IsChecked}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35px"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center"
+                               SnapsToDevicePixels="True"
+                               UseLayoutRounding="True"
+                               Stretch="Fill"
+                               StretchDirection="DownOnly" 
+                               Margin="-10,0,0,0"
+                               MaxWidth="24"
+                               MaxHeight="24"
+                        MinHeight="24"
+                               MinWidth="24"
+                               Source="{Binding ImageData}"/>
+                        <!--<Source="{Binding ImageData,Converter={Ctrls:TByteArrayToImageSourceConverter NullImageSource='/HIO;component/Resources/LogoCollapsedHover.png'}}" />-->
+                        <Grid Grid.Column="1" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Center"
+                          Height="45"
+                          UseLayoutRounding="True"  
+                          Background="Transparent"
+                          TextOptions.TextRenderingMode="ClearType">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".5*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Canvas Grid.Row="1" Grid.RowSpan="2" Margin="5,-3,0,0" ClipToBounds="True">
+                                <StackPanel TextBlock.FontSize="10px"
+                                            x:Name="Grd_Animator" 
+                                            Canvas.Top="0" 
+                                            UseLayoutRounding="True"
+                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Canvas},Path=ActualWidth}">
+                                    <TextBlock Text="{Binding Name,FallbackValue='Name'}" 
+                                               FontSize="15"
+                                               x:Name="Txt_MainTitle"
+                                               Foreground="{StaticResource HIODarkFont}"/>
+                                    <TextBlock x:Name="Txt_SubTitle1" 
+                                               UseLayoutRounding="True" 
+                                               Text="{Binding SubTitle1,FallbackValue='SubTitle1'}" 
+                                               Foreground="{DynamicResource HIOBrightFont}" 
+                                               HorizontalAlignment="Stretch"  
+                                               FontSize="12"
+                                               TextTrimming="CharacterEllipsis"/>
+                                    <DockPanel Opacity="0" x:Name="Txt_SubTitleContainer">
+                                        <Image Stretch="None" VerticalAlignment="Center" UseLayoutRounding="True" DockPanel.Dock="Left" Source="/HIO;component/Resources/Clock16.png"/>
+                                        <TextBlock Margin="3,0,0,0" 
+                                                   x:Name="Txt_SubTitle2"
+                                                   VerticalAlignment="Center" 
+                                                   UseLayoutRounding="True" 
+                                                   Text="{Binding SubTitle2,FallbackValue='SubTitle2'}" 
+                                                   Foreground="{DynamicResource HIOBrightFont}" 
+                                                   TextTrimming="CharacterEllipsis"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </Canvas>
+                        </Grid>
+                        <Ctrls:TLinkButton Grid.Column="1" 
+                                           HorizontalAlignment="Center" 
+                                           Content="Launch" 
+                                           VerticalAlignment="Center"
+                                           Margin="-30,0,0,0" 
+                                           FontSize="20"
+                                           Visibility="{Binding ElementName=root,Path=IsMouseOver,Converter={Ctrls:TBoolToVisibilityConverter},FallbackValue=Visible}"
+                                           
+                                           HorizontalContentAlignment="Center"
+                                           Foreground="#FFCCCCCC" 
+                                           CommandParameter="{Binding}"
+                                           Command="{Binding Parent.Commands.Lunch}"/>
+                    </Grid>
+                </Ctrls:TCheckbox>
+                <Image Grid.Column="3" 
+               x:Name="Img_Context"
+               MouseLeftButtonDown="Image_MouseLeftButtonDown"
+                       PreviewMouseRightButtonDown="Img_Context_PreviewMouseRightButtonDown"
+               VerticalAlignment="Center"
+               Stretch="None"
+                       
+               RenderOptions.BitmapScalingMode="NearestNeighbor"
+               Source="/HIO;component/Resources/Menu.png">
+                    <Image.ContextMenu>
+                        <ContextMenu Padding="0" x:Name="Cmnu_Main" 
+                                     FontSize="10px"
+                                     Foreground="{DynamicResource HIOBrightFont}"
+                                     FontFamily="Segoe UI" 
+                                     FontStretch="UltraExpanded"
+                                     Placement="Bottom"  >
+                            <MenuItem Margin="0,-6,0,-5" Header="Edit" Command="{Binding Parent.Commands.AccountEdit}" CommandParameter="{Binding}"/>
+
+                            <Separator Background="{DynamicResource HIOLineBright}" Margin="-30,0,0,0"/>
+
+
+                            <MenuItem Margin="0,0,0,-5" Header="Delete" Command="{Binding Parent.Commands.AccountDelete}" CommandParameter="{Binding}"/>
+                            <Separator Background="{DynamicResource HIOLineBright}" Margin="-30,0,0,0"/>
+                            <MenuItem Margin="0,0,0,-5" Header="Copy Url" Command="{Binding Parent.Commands.AccountCopyUrl}" CommandParameter="{Binding}"/>
+                            <Separator Background="{DynamicResource HIOLineBright}" Margin="-30,0,0,0"/>
+                            <MenuItem Margin="0,0,0,-5" Header="Copy Username" Command="{Binding Parent.Commands.AccountCopyUsername}" CommandParameter="{Binding}"/>
+                            <Separator Background="{DynamicResource HIOLineBright}" Margin="-30,0,0,0"/>
+                            <MenuItem Margin="0,0,0,-5" Header="Copy Password" Command="{Binding Parent.Commands.AccountCopyPassword}" CommandParameter="{Binding}"/>
+                        </ContextMenu>
+                    </Image.ContextMenu>
+                </Image>
+
+            </Grid>
+        </Border>
+        <Border BorderThickness="0,0,0,1" Margin="8,0" UseLayoutRounding="True" BorderBrush="#FFD8D8D8"/>
+
+    </Grid>
+</UserControl>

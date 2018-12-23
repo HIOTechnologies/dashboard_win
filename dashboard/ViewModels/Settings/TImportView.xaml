@@ -1,0 +1,104 @@
+﻿<Ctrls:TWindow x:Class="HIO.ViewModels.Settings.TImportView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:local="clr-namespace:HIO.ViewModels.Settings"
+               xmlns:Ctrls="clr-namespace:HIO.Controls"
+               xmlns:Gif="http://wpfanimatedgif.codeplex.com"
+               mc:Ignorable="d"
+               Title="Import" 
+               AllowShowMaximizeRestore="False"
+               AllowShowMinimize="False"
+               Height="820" 
+               Width="935">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.7*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource HIOWindowTitle}" 
+                   Text="Import" 
+                   VerticalAlignment="Bottom"
+                   Visibility="{Binding IsComplete,Converter={Ctrls:TBoolToVisibilityConverter Reverse=True}}"
+                   />
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" 
+                   Text="You can import your passwords directly from the following browsers" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="{DynamicResource HIOBrightFont}"
+                   Visibility="{Binding IsComplete,Converter={Ctrls:TBoolToVisibilityConverter Reverse=True}}"/>
+        <ScrollViewer HorizontalAlignment="Center" MinWidth="150" Margin="10" 
+                          VerticalAlignment="Stretch"
+                          VerticalScrollBarVisibility="Auto" Grid.Row="2"
+                          Visibility="{Binding IsComplete,Converter={Ctrls:TBoolToVisibilityConverter Reverse=True}}">
+            <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="1" >
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ctrls:TCheckbox IsChecked="{Binding IsChecked}" VerticalAlignment="Top" IsEnabled="{Binding IsDisabled, Converter={Ctrls:TInverseBooleanConverter}}">
+                            <DockPanel UseLayoutRounding="True" Height="26">
+                                <Image Source="{Binding ImageData,Converter={Ctrls:TByteArrayToImageSourceConverter}}" 
+                                       DockPanel.Dock="Left" 
+                                       Width="16"
+                                       Height="16"
+                                       VerticalAlignment="Center" 
+                                       StretchDirection="Both"/>
+                                <TextBlock Margin="5,0,0,0" Text="{Binding Title}" VerticalAlignment="Center"/>
+                            </DockPanel>
+                        </Ctrls:TCheckbox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Ctrls:TImportButton Grid.Row="3"
+                                 Content="Start Importing" 
+                                 ImportCommand="{Binding Commands.StartImporting}"
+                                 IsImporting="{Binding IsImporting}"
+                                 ProgressPercent="{Binding ImportProgressPercent}"
+                                 MinWidth="150" 
+                                 Visibility="{Binding ImportVisible,Converter={Ctrls:TBoolToVisibilityConverter}}"
+                                 VerticalAlignment="Top" 
+                                 HorizontalAlignment="Center"/>
+
+        <Ctrls:TInnerMessageBox Text="{Binding MessageErr,FallbackValue=''}"
+                                Visibility="{Binding MessageErr,Converter={Ctrls:TTextLengthToVisibilityConverter}}"
+                                OKCommand="{Binding Commands.ErrorOK}"
+                                VerticalContentAlignment="Center"
+                                Grid.Row="3"
+                                FontSize="18"
+                                VerticalAlignment="Stretch" 
+                                Foreground="#FFD9AFA7"
+                                Margin="0,0,0,20"/>
+
+        <Grid  Grid.RowSpan="3"
+               Grid.Row="0"
+               Visibility="{Binding IsComplete,Converter={Ctrls:TBoolToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="TickGif"
+               Gif:ImageBehavior.AnimatedSource="/HIO;component/Resources/tick2.gif"  
+               Gif:ImageBehavior.AnimateInDesignMode="True"
+               Gif:ImageBehavior.AutoStart="True"
+               Gif:ImageBehavior.RepeatBehavior="1x"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               StretchDirection="DownOnly"
+               VerticalAlignment="Bottom"/>
+            <TextBlock Text="Import completed successfully" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Grid>
+
+    </Grid>
+</Ctrls:TWindow>

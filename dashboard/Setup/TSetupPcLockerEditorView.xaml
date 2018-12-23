@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="HIO.Setup.TSetupPcLockerEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels.MagicLock"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/HIO;component/Controls/Button.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="PC Locker" Style="{StaticResource HIOWindowTitle}"/>
+        <TextBlock Grid.Row="1" Text="Your desktop will be locked when you leave your vicinity with the PC" 
+                   TextWrapping="Wrap"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="{DynamicResource HIOBrightFont}"/>
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Center">
+            <Border UseLayoutRounding="True" 
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="True" 
+                        BorderThickness="0,0,0,1" 
+                        BorderBrush="{StaticResource HIOLineDark}" 
+                        VerticalAlignment="Center"
+                        Padding="0,0,0,3"
+                        Margin="0,0,0,20">
+                <Ctrls:TComboBox Placeholder="User" 
+                         DisplayMemberPath="Title"
+                         ItemsSource="{Binding Users}"
+                         Grid.Row="2" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center"
+                         SelectedItem="{Binding SelectedUser,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                         MinWidth="170"
+                             Margin="0,0,0,0"/>
+            </Border>
+            <Ctrls:TPasswordBox Placeholder="Password" 
+                            Text="{Binding Password,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                            Grid.Row="3" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center" 
+                            MinWidth="170"
+                            Margin="0,10,0,0"/>
+        </StackPanel>
+        
+            <StackPanel Grid.Row="3" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                <Button Content="Skip" Command="{Binding Commands.MoveNextPage}" Margin="0,0,30,0"  MinHeight="28" MinWidth="78" />
+                <Button Content="Apply" Command="{Binding Commands.Apply}" MinHeight="28" MinWidth="78" />
+            </StackPanel>
+        </Grid>
+</UserControl>

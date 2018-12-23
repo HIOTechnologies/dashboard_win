@@ -1,0 +1,64 @@
+﻿<Ctrls:TWindow x:Class="HIO.Extentions.TExtention08View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:Ctrls="clr-namespace:HIO.Controls"
+        xmlns:local="clr-namespace:HIO.Extentions"
+               AllowShowMaximizeRestore="False"
+               AllowShowMinimize="False"
+               AllowShowClose="False"
+               ResizeMode="NoResize"
+               Topmost="True"
+   
+               ShowInTaskbar="False"
+               ShowActivated="True"
+        mc:Ignorable="d"
+        Title="All items" 
+               Height="266" Width="410">
+    <!--<Ctrls:TWindow.Resources>
+        <DataTemplate x:Key="TLinkItemTemplate" DataType="{x:Type local:TLinkItem}">
+            <local:TLinkItemView/>
+        </DataTemplate>
+    </Ctrls:TWindow.Resources>-->
+
+    <DockPanel Margin="30,30,20,20">
+
+        <Ctrls:TSearchbox Placeholder="Search" 
+                          DockPanel.Dock="Top"
+                          Margin="0,0,20,0"
+                          SearchText="{Binding SearchText,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+        <!--<ScrollViewer Margin="0,10,0,0"
+                      IsHitTestVisible="true" VerticalScrollBarVisibility="Auto"
+                       UseLayoutRounding="True" 
+                          HorizontalContentAlignment="Stretch"
+							
+                          VerticalContentAlignment="Stretch">-->
+            <ListBox ItemsSource="{Binding Items}" Margin="0,0,10,0" SelectedItem="{Binding SelectedItem}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <DockPanel Margin="0,0,5,0">
+                                        <Separator x:Name="Separator" Margin="0,2" SnapsToDevicePixels="True" DockPanel.Dock="Top" Background="{StaticResource HIOLineBright}"/>
+
+                                        <local:TLinkItemView x:Name="aa" IsSelected="{TemplateBinding IsSelected}" LaunchCommand="{Binding Commands.Launch}" ShowCommand="True" />
+                                    </DockPanel>
+                                    <ControlTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" TargetName="Separator" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
+            </ListBox>
+        <!--</ScrollViewer>-->
+
+    </DockPanel>
+</Ctrls:TWindow>

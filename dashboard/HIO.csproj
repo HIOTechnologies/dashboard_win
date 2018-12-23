@@ -1,0 +1,1140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{46099BE9-14C7-4318-B141-38921CE5CCBB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HIO</RootNamespace>
+    <AssemblyName>HIO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\test\Desktop\TEST\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\HIO.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test_Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test_Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Test_Debug</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test_Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Test_Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test Setup|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test Setup\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Test_Debug Test_Setup</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test Setup|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Test Setup\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Test_Setup</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>EA0C34EB7297395167D336BC5E9EF17E648CDAC0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test Extentions|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test Extentions\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Test_Debug Test_Extentions</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test Extentions|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Test Extentions\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.12.0.1\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Messaging">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.WindowsRuntime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETCore\v4.5\System.Runtime.WindowsRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.16\lib\net\WpfAnimatedGif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Backend\Backup.cs" />
+    <Compile Include="Backend\BridgeandSwitch.cs" />
+    <Compile Include="Backend\Bridge\deviceListAndOpen.cs" />
+    <Compile Include="Backend\Chrome\Chrome.cs" />
+    <Compile Include="Backend\Converts.cs" />
+    <Compile Include="Backend\DataBase.cs" />
+    <Compile Include="Backend\Edge\Edge.cs" />
+    <Compile Include="Backend\EncodingBase64.cs" />
+    <Compile Include="Backend\ErrorHandle.cs" />
+    <Compile Include="Backend\ExtenstionConnection.cs" />
+    <Compile Include="Backend\Firefox\BerkeleyDB.cs" />
+    <Compile Include="Backend\Firefox\Cryptography\Asn1Der.cs" />
+    <Compile Include="Backend\Firefox\Cryptography\MozillaPBE.cs" />
+    <Compile Include="Backend\Firefox\Cryptography\TripleDESHelper.cs" />
+    <Compile Include="Backend\Firefox\Firefox.cs" />
+    <Compile Include="Backend\Firefox\Passwordcheck.cs" />
+    <Compile Include="Backend\GeneralClass.cs" />
+    <Compile Include="Backend\GeneratePassword.cs" />
+    <Compile Include="Backend\HID\BLEBrowser.cs" />
+    <Compile Include="Backend\HID\BLEDevice.cs" />
+    <Compile Include="Backend\HID\HIDBrowse.cs" />
+    <Compile Include="Backend\HID\HIDDev.cs" />
+    <Compile Include="Backend\HID\HIDInfo.cs" />
+    <Compile Include="Backend\HID\IDevice.cs" />
+    <Compile Include="Backend\HID\IDeviceInfo.cs" />
+    <Compile Include="Backend\HID\Native.cs" />
+    <Compile Include="Backend\IconURL\Favicon.cs" />
+    <Compile Include="Backend\IconURL\WebClientExtended.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Backend\InterceptMouse.cs" />
+    <Compile Include="Backend\ICommands.cs" />
+    <Compile Include="Backend\pipe.cs" />
+    <Compile Include="Backend\ProccessMessage.cs" />
+    <Compile Include="Backend\Queue.cs" />
+    <Compile Include="Backend\USBCheck.cs" />
+    <Compile Include="Backend\windowsUWP.cs" />
+    <Compile Include="Controls\TAnimatedContentControl.cs" />
+    <Compile Include="Controls\TAutoCompleteTextbox.cs" />
+    <Compile Include="Controls\TBatteryPresenter.xaml.cs">
+      <DependentUpon>TBatteryPresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TCheckbox.cs" />
+    <Compile Include="Controls\TComboBox.cs" />
+    <Compile Include="Controls\TEditableLabel.cs" />
+    <Compile Include="Controls\TImportButton.cs" />
+    <Compile Include="Controls\TInnerMessageBox.xaml.cs">
+      <DependentUpon>TInnerMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TInteractiveButton.xaml.cs">
+      <DependentUpon>TInteractiveButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TLinkButton.cs" />
+    <Compile Include="Controls\TMessageBox.cs" />
+    <Compile Include="Controls\TMessageBoxView.xaml.cs">
+      <DependentUpon>TMessageBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TPasswordBox.cs" />
+    <Compile Include="Controls\TPinEditor.cs" />
+    <Compile Include="Controls\TProgressBar.cs" />
+    <Compile Include="Controls\TProximityEditor.cs" />
+    <Compile Include="Controls\TSearchbox.xaml.cs">
+      <DependentUpon>TSearchbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TSetupPageContentControl.cs" />
+    <Compile Include="Controls\TSignalPresenter.xaml.cs">
+      <DependentUpon>TSignalPresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TSlider.cs" />
+    <Compile Include="Controls\TTextBox.cs" />
+    <Compile Include="Controls\TWindow.cs" />
+    <Compile Include="Controls\TWindowToolbar.xaml.cs">
+      <DependentUpon>TWindowToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\IExtention.cs" />
+    <!--  <Compile Include="Extentions\TExtentionMenu.cs" />
+    <Compile Include="Extentions\TExtentionMenuView.xaml.cs">
+      <DependentUpon>TExtentionMenuView.xaml</DependentUpon>-->
+    <Compile Include="Extentions\TPinInputExtension.cs" />
+    <Compile Include="Extentions\TExtention08.cs" />
+    <Compile Include="Extentions\TPinInputExtensionView.xaml.cs">
+      <DependentUpon>TPinInputExtensionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention08View.xaml.cs">
+      <DependentUpon>TExtention08View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention07.cs" />
+    <Compile Include="Extentions\TExtention02.cs" />
+    <Compile Include="Extentions\TExtention07View.xaml.cs">
+      <DependentUpon>TExtention07View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention02View.xaml.cs">
+      <DependentUpon>TExtention02View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtentionGenPass.cs" />
+    <Compile Include="Extentions\TExtentionGenPassView.xaml.cs">
+      <DependentUpon>TExtentionGenPassView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention11.cs" />
+    <Compile Include="Extentions\TExtention11View.xaml.cs">
+      <DependentUpon>TExtention11View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention06a.cs" />
+    <Compile Include="Extentions\TExtention06aView.xaml.cs">
+      <DependentUpon>TExtention06aView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention13.cs" />
+    <Compile Include="Extentions\TExtention10.cs" />
+    <Compile Include="Extentions\TExtention13View.xaml.cs">
+      <DependentUpon>TExtention13View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention10View.xaml.cs">
+      <DependentUpon>TExtention10View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention09View.xaml.cs">
+      <DependentUpon>TExtention09View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtention09.cs" />
+    <Compile Include="Extentions\TExtentionManage.cs" />
+    <Compile Include="Extentions\TAdminExtention.cs" />
+    <Compile Include="Extentions\TExtentionManageView.xaml.cs">
+      <DependentUpon>TExtentionManageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TExtentionMenu.cs" />
+    <Compile Include="Extentions\TExtentionMenuView.xaml.cs">
+      <DependentUpon>TExtentionMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extentions\TLinkItemView.xaml.cs">
+      <DependentUpon>TLinkItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\THIOBridge.xaml.cs">
+      <DependentUpon>THIOBridge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TNewDeviceAddingPage3_2.cs" />
+    <Compile Include="Setup\TNewDeviceAddingPage3.cs" />
+    <Compile Include="Setup\TNewDeviceAddingPage3_2View.xaml.cs">
+      <DependentUpon>TNewDeviceAddingPage3_2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TNewDeviceAddingPage3View.xaml.cs">
+      <DependentUpon>TNewDeviceAddingPage3View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupImportComplete.cs" />
+    <Compile Include="Setup\TSetupImportCompleteView.xaml.cs">
+      <DependentUpon>TSetupImportCompleteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupImportView.xaml.cs">
+      <DependentUpon>TSetupImportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage3-2.cs" />
+    <Compile Include="Setup\TSetupPage3-2View.xaml.cs">
+      <DependentUpon>TSetupPage3-2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage5-2.cs" />
+    <Compile Include="Setup\TSetupPage5-2View .xaml.cs">
+      <DependentUpon>TSetupPage5-2View .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPcLockerEditorView.xaml.cs">
+      <DependentUpon>TSetupPcLockerEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TWizard.cs" />
+    <Compile Include="Setup\TSetupPage1.cs" />
+    <Compile Include="Setup\TSetupPage1View.xaml.cs">
+      <DependentUpon>TSetupPage1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage2View.xaml.cs">
+      <DependentUpon>TSetupPage2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage6.cs" />
+    <Compile Include="Setup\TSetupPage5.cs" />
+    <Compile Include="Setup\TSetupPage4.cs" />
+    <Compile Include="Setup\TSetupPage3.cs" />
+    <Compile Include="Setup\TSetupPage2.cs" />
+    <Compile Include="Setup\TSetupPage6View.xaml.cs">
+      <DependentUpon>TSetupPage6View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage5View.xaml.cs">
+      <DependentUpon>TSetupPage5View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage4View.xaml.cs">
+      <DependentUpon>TSetupPage4View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPage3View.xaml.cs">
+      <DependentUpon>TSetupPage3View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TSetupPageBase.cs" />
+    <Compile Include="Setup\TSetupWizard.cs" />
+    <Compile Include="Setup\TSetupWizardView.xaml.cs">
+      <DependentUpon>TSetupWizardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="System\TDateTimeHelper.cs" />
+    <Compile Include="System\TEnumHelper.cs" />
+    <Compile Include="System\TEnumImageUri.cs" />
+    <Compile Include="System\TNumberHelper.cs" />
+    <Compile Include="System\TStringHelper.cs" />
+    <Compile Include="Core\TCommandMap.cs" />
+    <Compile Include="Core\TLogger.cs" />
+    <Compile Include="Controls\TSideBar.xaml.cs">
+      <DependentUpon>TSideBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TSideBarButton.xaml.cs">
+      <DependentUpon>TSideBarButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\TViewModelBase.cs" />
+    <Compile Include="ViewModels\Accounts\TAccountEditor.cs" />
+    <Compile Include="ViewModels\Accounts\TAccountEditorView.xaml.cs">
+      <DependentUpon>TAccountEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Accounts\TAccountItem.cs" />
+    <Compile Include="ViewModels\Accounts\TAccountItemView.xaml.cs">
+      <DependentUpon>TAccountItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Accounts\TAccountManagerView.xaml.cs">
+      <DependentUpon>TAccountManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Accounts\TAccountManagerViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\TAddNewAccount.cs" />
+    <Compile Include="ViewModels\Accounts\TAddNewAccountContent.xaml.cs">
+      <DependentUpon>TAddNewAccountContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Accounts\TAddNewAccountView.xaml.cs">
+      <DependentUpon>TAddNewAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MagicLock\TMagicLockManager.cs" />
+    <Compile Include="ViewModels\MagicLock\TMagicLockManagerView.xaml.cs">
+      <DependentUpon>TMagicLockManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MagicLock\TPcLockerEditor.cs" />
+    <Compile Include="ViewModels\MagicLock\TPcLockerEditorView.xaml.cs">
+      <DependentUpon>TPcLockerEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Notify\TAbout.cs" />
+    <Compile Include="ViewModels\Notify\TAboutView.xaml.cs">
+      <DependentUpon>TAboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TApplicationPasswordEditor.cs" />
+    <Compile Include="ViewModels\Security\TPinInputUserControl.xaml.cs">
+      <DependentUpon>TPinInputUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TPinInputViewModel.cs" />
+    <Compile Include="ViewModels\Security\TSetupPersonalPin.cs" />
+    <Compile Include="ViewModels\Security\TSetupPersonalPinView.xaml.cs">
+      <DependentUpon>TSetupPersonalPinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TRequireAnApplicationPassword.cs" />
+    <Compile Include="ViewModels\Security\TDisablePersonalPin.cs" />
+    <Compile Include="ViewModels\Security\TApplicationPasswordEditorView.xaml.cs">
+      <DependentUpon>TApplicationPasswordEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TRequireAnApplicationPasswordView.xaml.cs">
+      <DependentUpon>TRequireAnApplicationPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TPersonalPinEditorView.xaml.cs">
+      <DependentUpon>TPersonalPinEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TDisablePersonalPinView.xaml.cs">
+      <DependentUpon>TDisablePersonalPinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TPersonalPinEditor.cs" />
+    <Compile Include="ViewModels\Settings\NewDeviceAdding\TAddNewDevice.cs" />
+    <Compile Include="ViewModels\Settings\NewDeviceAdding\TAddNewDeviceView.xaml.cs">
+      <DependentUpon>TAddNewDeviceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TNewDeviceAddingPage1.cs" />
+    <Compile Include="Setup\TNewDeviceAddingPage1View.xaml.cs">
+      <DependentUpon>TNewDeviceAddingPage1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TNewDeviceAddingPage2.cs" />
+    <Compile Include="Setup\TNewDeviceAddingPage2View.xaml.cs">
+      <DependentUpon>TNewDeviceAddingPage2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\TNewDeviceAddingPage4.cs" />
+    <Compile Include="Setup\TNewDeviceAddingPage4View.xaml.cs">
+      <DependentUpon>TNewDeviceAddingPage4View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Settings\TDevice.cs" />
+    <Compile Include="ViewModels\Settings\TDeviceView.xaml.cs">
+      <DependentUpon>TDeviceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Settings\TImport.cs" />
+    <Compile Include="ViewModels\Settings\TImportView.xaml.cs">
+      <DependentUpon>TImportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Settings\TMyHIO.xaml.cs">
+      <DependentUpon>TMyHIO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\TMain.cs" />
+    <Compile Include="ViewModels\MagicLock\TPasswordEditor.cs" />
+    <Compile Include="ViewModels\MagicLock\TPasswordEditorView.xaml.cs">
+      <DependentUpon>TPasswordEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Security\TSecurityManager.cs" />
+    <Compile Include="ViewModels\Security\TSecurityManagerView.xaml.cs">
+      <DependentUpon>TSecurityManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Settings\TSettingManager.cs" />
+    <Compile Include="ViewModels\Settings\TSettingManagerView.xaml.cs">
+      <DependentUpon>TSettingManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\TTabManager.cs" />
+    <Compile Include="ViewModels\TTabBase.cs" />
+    <Compile Include="WPF\Animation\TBrushAnimation.cs" />
+    <Compile Include="WPF\Animation\TRotatorService.cs" />
+    <Compile Include="WPF\Converters\TBoolToBrushConverter.cs" />
+    <Compile Include="WPF\Converters\TBoundsToViewBoxConverter.cs" />
+    <Compile Include="WPF\Converters\TBooleanToStringConverter.cs" />
+    <Compile Include="WPF\Converters\TBoolToGridLengthConverter.cs" />
+    <Compile Include="WPF\Converters\TBoolToImageSourceConverter.cs" />
+    <Compile Include="WPF\Converters\TBoolToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\TByteArrayToImageSourceConverter.cs" />
+    <Compile Include="WPF\Converters\TEnumValueToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\TInverseBooleanConverter.cs" />
+    <Compile Include="WPF\Converters\TPropertyValueNotNullToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\TTextLengthToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\TWindowStateToImageConverter.cs" />
+    <Compile Include="WPF\DialogSizeSetter.cs" />
+    <Compile Include="WPF\Services\UIService.cs" />
+    <Compile Include="WPF\TEmbeddedResource.cs" />
+    <Page Include="Controls\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TAnimatedContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TAutoCompleteTextbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TImportButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Public.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TProximityEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TSetupPageContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TBatteryPresenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TCheckbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TInnerMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TInteractiveButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TLinkButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TMessageBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TPasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TPinEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TSearchbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TSignalPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TWindowToolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <!-- <Page Include="Extentions\TExtentionMenuView.xaml">
+-->
+    <Page Include="Extentions\TPinInputExtensionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention08View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention07View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention02View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtentionGenPassView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Extentions\TExtention11View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention06aView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention13View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention10View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtention09View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TExtentionManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Extentions\TExtentionMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extentions\TLinkItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Properties\DesignTimeResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="Setup\THIOBridge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TNewDeviceAddingPage3_2View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TNewDeviceAddingPage3View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupImportCompleteView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupImportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TSetupPage1View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TSetupPage2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TSetupPage3-2View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupPage5-2View .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupPage6View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupPage5View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupPage4View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Setup\TSetupPage3View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TSetupPcLockerEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TSetupWizardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Accounts\TAccountEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Accounts\TAccountItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Accounts\TAddNewAccountContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Accounts\TAddNewAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\MagicLock\TMagicLockManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\MagicLock\TPcLockerEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Notify\TAboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Security\TApplicationPasswordEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Security\TPinInputUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Security\TSetupPersonalPinView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Security\TRequireAnApplicationPasswordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Security\TPersonalPinEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewModels\Security\TDisablePersonalPinView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Settings\NewDeviceAdding\TAddNewDeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TNewDeviceAddingPage1View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TNewDeviceAddingPage2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Setup\TNewDeviceAddingPage4View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Settings\TDeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Settings\TImportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Settings\TMyHIO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\TMainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\TMainView.xaml.cs">
+      <DependentUpon>TMainView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Controls\TSideBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TSideBarButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Accounts\TAccountManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\MagicLock\TPasswordEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Security\TSecurityManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\Settings\TSettingManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Windows.winmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Models\" />
+    <Folder Include="WPF\Markups\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Trash16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Clock16.png" />
+    <Resource Include="Resources\NoSynchronize16.png" />
+    <Resource Include="Resources\Synchronize16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sortby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Battery\Battery Level_32px.png" />
+    <Resource Include="Resources\Battery\Charged Battery_32px.png" />
+    <Resource Include="Resources\Battery\Empty Battery_32px.png" />
+    <Resource Include="Resources\Battery\Full Battery_32px.png" />
+    <Resource Include="Resources\Battery\Low Battery_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Signal\Low Connection_32px.png" />
+    <Resource Include="Resources\Signal\No Connection_32px.png" />
+    <Resource Include="Resources\Signal\Signal2_32px.png" />
+    <Resource Include="Resources\Signal\Signal_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Window\Window.Close_16px.png" />
+    <Resource Include="Resources\Window\Window.Maximize_16px.png" />
+    <Resource Include="Resources\Window\Window.Minimize_16px.png" />
+    <Resource Include="Resources\Window\Window.Restore_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Buttons\pc.png" />
+    <Resource Include="Resources\Buttons\pc2.png" />
+    <Resource Include="Resources\Buttons\profile.png" />
+    <Resource Include="Resources\Buttons\profile2.png" />
+    <Resource Include="Resources\Buttons\security.png" />
+    <Resource Include="Resources\Buttons\security2.png" />
+    <Resource Include="Resources\Buttons\setting.png" />
+    <Resource Include="Resources\Buttons\setting2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Eye_HidePassword_16px.png" />
+    <Resource Include="Resources\Eye_ShowPassword_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LogoCollapsedHover.png" />
+    <Resource Include="Resources\LogoCollapsedNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tick2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\loading10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HighImportance_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\Stars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\MonitorWithLock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\Disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bluetooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\nasb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\button.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Firefox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Chrome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Require.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Require2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\require3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon-16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Tick Box_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Unchecked Checkbox_16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\2_1024.png" />
+    <Resource Include="Resources\SetupWizard\2_1366.png" />
+    <Resource Include="Resources\SetupWizard\3-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SetupWizard\Backward_24px.png" />
+    <Resource Include="Resources\SetupWizard\Forward_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="System.Runtime.WindowsRuntime">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Windows">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\edge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HIO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HIO2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HIO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

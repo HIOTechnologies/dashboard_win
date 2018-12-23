@@ -1,0 +1,52 @@
+﻿<Ctrls:TWindow x:Class="HIO.TMainView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:local="clr-namespace:HIO"
+               xmlns:Ctrls="clr-namespace:HIO.Controls"
+               xmlns:ACC ="clr-namespace:HIO.ViewModels.Accounts"
+               xmlns:ML ="clr-namespace:HIO.ViewModels.MagicLock"
+               xmlns:Sec ="clr-namespace:HIO.ViewModels.Security"
+               xmlns:Set ="clr-namespace:HIO.ViewModels.Settings"
+               
+               AllowShowClose="True"
+               AllowShowMaximizeRestore="True"
+               AllowShowMinimize="True"
+               ResizeMode="CanResize"
+               mc:Ignorable="d"
+                ShowInTaskbar="True"
+               ShowActivated="False"
+               Title="HIO" 
+               
+               Height="640"
+               Width="1024"  >
+
+    <Ctrls:TWindow.Resources>
+
+        <DataTemplate  DataType="{x:Type ACC:TAccountManagerViewModel}">
+            <ACC:TAccountManagerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ML:TMagicLockManager}">
+            <ML:TMagicLockManagerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type Sec:TSecurityManager}">
+            <Sec:TSecurityManagerView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type Set:TSettingManager}">
+            <Set:TSettingManagerView/>
+        </DataTemplate>
+    </Ctrls:TWindow.Resources>
+
+
+    <Grid>
+        <DockPanel Visibility="{Binding IsPinRequired, Converter={Ctrls:TBoolToVisibilityConverter Reverse=True}}">
+            <Ctrls:TSideBar IsConnected="{Binding IsConnected}" DockPanel.Dock="Left" Width="220" IsExpanded="False"/>
+            <ContentPresenter Content="{Binding TabManager.ActiveTab}" Margin="30,20,30,20"/>
+        </DockPanel>
+
+        <Sec:TPinInputUserControl/>
+    </Grid>
+
+</Ctrls:TWindow>

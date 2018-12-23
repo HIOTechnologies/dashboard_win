@@ -1,0 +1,121 @@
+﻿<Ctrls:TWindow x:Class="HIO.Setup.TSetupWizardView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:Ctrls="clr-namespace:HIO.Controls"
+               xmlns:local="clr-namespace:HIO.Setup"
+               xmlns:MagicLock="clr-namespace:HIO.ViewModels.MagicLock"
+               xmlns:Settings="clr-namespace:HIO.ViewModels.Settings"
+               mc:Ignorable="d"
+               Title="Setup HIO" 
+               AllowShowToolbox="{Binding ActivePage.AllowShowToolbox}"
+               Height="680" 
+               Topmost="False"
+               ShowInTaskbar="True"
+               ShowActivated="True"
+               Width="1064" >
+    <Ctrls:TWindow.Resources>
+
+        <DataTemplate DataType="{x:Type local:TSetupPage1}">
+            <local:TSetupPage1View/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage2}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage2View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage3}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage3View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage3_2}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage3_2View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage4}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage4View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage5}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage5View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage5_2}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage5_2View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupPage6}">
+            <Ctrls:TSetupPageContentControl>
+                <local:TSetupPage6View/>
+            </Ctrls:TSetupPageContentControl>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:TNewDeviceAddingPage1}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+
+            <local:TNewDeviceAddingPage1View Margin="0,100,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TNewDeviceAddingPage2}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+            <local:TNewDeviceAddingPage2View Margin="0,100,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TNewDeviceAddingPage3}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+            <local:TNewDeviceAddingPage3View Margin="0,100,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TNewDeviceAddingPage3_2}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+            <local:TNewDeviceAddingPage3_2View Margin="0,0,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TNewDeviceAddingPage4}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+            <local:TNewDeviceAddingPage4View Margin="0,100,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+
+        <!-- <DataTemplate DataType="{x:Type MagicLock:TPcLockerEditor}">-->
+        <!--<Ctrls:TSetupPageContentControl>-->
+        <!-- <local:TSetupPcLockerEditorView Margin="0,100,0,0"/>-->
+        <!--</Ctrls:TSetupPageContentControl>-->
+      <!--  </DataTemplate>-->
+        <DataTemplate DataType="{x:Type Settings:TImport}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+            <local:TSetupImportView Margin="0,100,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:TSetupImportComplete}">
+            <!--<Ctrls:TSetupPageContentControl>-->
+            <local:TSetupImportCompleteView Margin="0,0,0,0"/>
+            <!--</Ctrls:TSetupPageContentControl>-->
+        </DataTemplate>
+    </Ctrls:TWindow.Resources>
+    <Grid  >
+        <Ctrls:TProgressBar AnimationDuration="{Binding ProgressAnimationDuration}"
+                            Value="{Binding ProgressPercent,FallbackValue=50}" 
+                     UseLayoutRounding="True"
+                     VerticalAlignment="Top" 
+                     Margin="0,5,0,0"/>
+        <Ctrls:TAnimatedContentControl Content="{Binding ActivePage}"
+                                       Direction="{Binding Direction}"/>
+        <Grid    Visibility="{Binding Message,Converter={Ctrls:TTextLengthToVisibilityConverter}}">
+            <Ctrls:TInnerMessageBox Text="{Binding Message,FallbackValue='Confirm your email address to access HIOs features.'}"
+                                VerticalContentAlignment="Center"
+                                OKCommand="{Binding Commands.ErrorOK}"
+                                FontSize="18"
+                                VerticalAlignment="Bottom" 
+                                Margin="0,0,0,30"
+                                MinHeight="100px"
+                                Foreground="#FFD9AFA7"/>
+        </Grid>
+    </Grid>
+</Ctrls:TWindow>

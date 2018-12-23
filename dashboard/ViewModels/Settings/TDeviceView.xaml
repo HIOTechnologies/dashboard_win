@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="HIO.ViewModels.Settings.TDeviceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels.Settings"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+
+             UseLayoutRounding="True"
+             mc:Ignorable="d" 
+             Height="35"
+             
+             d:DesignWidth="500">
+    <DockPanel LastChildFill="True">
+
+        <Image x:Name="Btn_Forget" 
+               MouseLeftButtonDown="Btn_Forget_MouseLeftButtonDown" 
+               StretchDirection="DownOnly" 
+               DockPanel.Dock="Right" 
+               Margin="5,0,0,0" 
+               Source="/HIO;component/Resources/HighImportance_16px.png">
+
+            <Image.ContextMenu>
+                <ContextMenu x:Name="Cmnu_Forget" FontFamily="Segoe UI" FontSize="12">
+
+                    <MenuItem Header="Forget" 
+                              Command="{Binding Commands.Forget}"/>
+                </ContextMenu>
+            </Image.ContextMenu>
+        </Image>
+        <Grid>
+            <TextBlock Text="{Binding Title,FallbackValue='Test'}" 
+                       VerticalAlignment="Center"
+                       IsHitTestVisible="False"
+                       SnapsToDevicePixels="True"
+                       Foreground="{DynamicResource HIOBrightFont}" 
+                       FontSize="13" />
+            <TextBlock VerticalAlignment="Center" 
+                           HorizontalAlignment="Right"
+                           FontSize="10"
+                           Text="Connected"
+                       Visibility="{Binding IsConnected, Converter={Ctrls:TBoolToVisibilityConverter}}"
+                       IsHitTestVisible="False"
+                           Foreground="{StaticResource HIOBrightFont}"/>
+            <TextBlock VerticalAlignment="Center" 
+                           HorizontalAlignment="Right"
+                           FontSize="10"
+                           Text="Disconnected" 
+                        Visibility="{Binding IsConnected, Converter={Ctrls:TBoolToVisibilityConverter Reverse=True}}"
+                           IsHitTestVisible="False"
+                           Foreground="{StaticResource HIOBrightFont}"/>
+            <Ctrls:TLinkButton Command="{Binding Commands.Connect}" 
+                               Background="Transparent"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                           Content="{Binding Title,FallbackValue='Test'}" 
+                           Foreground="{DynamicResource HIOBrightFont}" 
+                           FontSize="13" 
+                               HorizontalContentAlignment="Left"
+                           VerticalContentAlignment="Center"/>
+        </Grid>
+    </DockPanel>
+</UserControl>

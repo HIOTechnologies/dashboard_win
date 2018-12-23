@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="HIO.ViewModels.Security.TPinInputUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels.Security"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             xmlns:BE="clr-namespace:HIO.Backend"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900"  Visibility="{Binding  IsPinRequired, Converter={Ctrls:TBoolToVisibilityConverter}}">
+    <Grid>
+        <Grid Visibility="{Binding IsPinRequired, Converter={Ctrls:TBoolToVisibilityConverter}}" ShowGridLines="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height=".4*"/>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height=".80*"/>
+                <RowDefinition Height=".2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <!--<Image
+                x:Name="HIO"    
+                Grid.Row="1"
+                Grid.Column="1"
+                Source="/HIO;component/Resources/HIO.png"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                RenderOptions.BitmapScalingMode="HighQuality">
+            </Image>-->
+            <Viewbox
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="{Binding ElementName=HIO, Path=ActualWidth}">
+                <TextBlock
+                Foreground="{DynamicResource HIOBrightFont}">
+                Enter your personal pin
+                </TextBlock>
+            </Viewbox>
+            <Ctrls:TPasswordBox
+                            x:Name="Pin"
+                            TabIndex="0"
+                            Text="{Binding PersonalPin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                            Grid.Row="3"
+                            Grid.Column="1"    
+                            BorderThickness="1"
+                            FontSize="20"
+                            MaxLength="6"
+                            Width="{Binding ElementName=HIO, Path=ActualWidth}"
+                            ShowPasswordEnabled="False"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding PersonalPinErrorMessage,FallbackValue='Wrong pincode'}" 
+                   Grid.Row="4"
+                   Grid.Column="1"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Foreground="#CCAF3F29"
+                   Visibility="{Binding PersonalPinErrorMessage, Converter={Ctrls:TTextLengthToVisibilityConverter}}"/>
+            <Button Command="{Binding Commands.SubmitPersonalPin}"
+                IsDefault="True"
+                IsEnabled="{Binding ShowResetPersonalPin, Converter={Ctrls:TInverseBooleanConverter}}"
+                Grid.Row="5"
+                Grid.Column="1"    
+                Background="{DynamicResource HIOGigari}"
+                Foreground="White"
+                FontSize="20"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Stretch"
+                Width="{Binding ElementName=HIO, Path=ActualWidth}"
+                Height="{Binding ElementName=Pin, Path=ActualHeight}"
+                Content="Submit"/>
+            <Button Content="RESET?" 
+                   Grid.Row="6"
+                   Grid.Column="1"
+                   FontSize="20"
+                   Cursor="Hand"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Foreground="#CCAF3F29"
+                   Command="{Binding Commands.ResetPersonalPin}"
+                   Visibility="{Binding PersonalPinErrorMessage, Converter={Ctrls:TTextLengthToVisibilityConverter}}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                               Text="{TemplateBinding Content}"
+                                      TextBlock.Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Viewbox Grid.Row="7"
+                     Grid.Column="1"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Bottom"
+                     Width="{Binding ElementName=HIO, Path=ActualWidth}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock 
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource HIOBrightFont}">Do you want    add a new device?</TextBlock>
+                    <TextBlock></TextBlock>
+                    <Button 
+                           Grid.Row="6"
+                           Grid.Column="1"
+                           Content=" Add a new hio"
+                           Cursor="Hand"
+                           VerticalAlignment="Bottom" 
+                           Foreground="#CCAF3F29"
+                           Command="{Binding Commands.AddNewDevice}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                               Text="{TemplateBinding Content}"
+                                      TextBlock.Foreground="{TemplateBinding Foreground}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Viewbox>
+            <Ctrls:TInnerMessageBox
+                Grid.Row="7"
+                Grid.ColumnSpan="3"
+                Text="{Binding PersonalPinFooterErrorMessage}"
+                FontSize="20"
+                Foreground="#FFD9AFA7"
+                Visibility="{Binding PersonalPinFooterErrorMessage, Converter={Ctrls:TTextLengthToVisibilityConverter}}">
+            </Ctrls:TInnerMessageBox>
+        </Grid>
+        <Grid 
+            Visibility="{Binding ShowResetPersonalPin, Converter={Ctrls:TBoolToVisibilityConverter}}"
+            Background="{DynamicResource HIOGigari}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="White"
+                FontSize="28">
+                Reset
+            </TextBlock>
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                TextAlignment="Center"
+                Foreground="White"
+                FontSize="24">
+                Are you sure?
+                <LineBreak/>
+                <LineBreak/>
+                All your data will be clear!
+            </TextBlock>
+            <Grid
+                Grid.Row="4"
+                Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.ColumnSpan="2"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderBrush="White"
+                    MinWidth="100"
+                    Command="{Binding Commands.ResetPersonalPinCancel}">
+                    Cancel
+                </Button>
+                <Button
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderBrush="White"
+                    DockPanel.Dock="Right"
+                    Command="{Binding Commands.ResetPersonalPinOK}">
+                    OK
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

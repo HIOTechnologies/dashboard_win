@@ -1,0 +1,76 @@
+﻿<Ctrls:TWindow x:Class="HIO.ViewModels.Security.TDisablePersonalPinView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:local="clr-namespace:HIO.ViewModels.Security"
+                xmlns:Ctrls="clr-namespace:HIO.Controls"
+                mc:Ignorable="d"
+                Title="Disable your personal pin" 
+                              AllowShowMaximizeRestore="False"
+               AllowShowMinimize="False"
+               Height="424"
+               Width="640">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Disable your personal pin"
+                   x:Name="Title"
+                   Style="{StaticResource HIOWindowTitle}"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Grid.Row="0"
+                   Grid.Column="1" />
+        <TextBlock Text="Please enter your current personal pin" 
+                   Foreground="{DynamicResource HIOBrightFont}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Column="1" Grid.Row="1" />
+
+        <Ctrls:TPasswordBox Grid.Column="1" 
+                          MaxLength="6"
+                          Foreground="{DynamicResource HIODarkFont}"
+                          HorizontalContentAlignment="Left"
+                            HorizontalAlignment="Stretch"
+                          Text="{Binding PersonalPin,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                          Grid.Row="2" 
+                          Width="{Binding ElementName=Title, Path=ActualWidth}" 
+                          VerticalAlignment="Center" FontSize="18"/>
+        
+        <!--<Ctrls:TTextbox Grid.Row="2" Placeholder="Title" Grid.Column="1" VerticalAlignment="Bottom" />
+        <Ctrls:TTextbox Grid.Row="3" Placeholder="Username" Grid.Column="1" VerticalAlignment="Bottom" />
+        <Ctrls:TPasswordbox Grid.Row="4" Placeholder="Password" Grid.Column="1" VerticalAlignment="Bottom" />
+        <Ctrls:TTextbox Grid.Row="5" Placeholder="Url" Grid.Column="1" VerticalAlignment="Bottom" />-->
+        <Button Content="Apply" 
+                Command="{Binding Commands.Apply}"
+                MinWidth="78"
+                MinHeight="28"
+                Grid.Row="4" 
+                Grid.Column="1"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center">
+        </Button>
+
+        <Ctrls:TInnerMessageBox
+                Grid.Row="4"
+                Grid.ColumnSpan="3"
+                Expiry="{Binding ErrorMessageExpiry}"
+                Text="{Binding ErrorMessage}"
+                OKCommand="{Binding Commands.ErrorOK}"
+                Foreground="#FFD9AFA7"
+                VerticalAlignment="Stretch"
+                Visibility="{Binding ErrorMessage,Converter={Ctrls:TTextLengthToVisibilityConverter}}">
+        </Ctrls:TInnerMessageBox>
+    </Grid>
+</Ctrls:TWindow>

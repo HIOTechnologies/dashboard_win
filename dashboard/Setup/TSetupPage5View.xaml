@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="HIO.Setup.TSetupPage5View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.Setup"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1024">
+
+        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="/HIO;component/Resources/SetupWizard/Disk.png" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Stretch="Uniform" 
+               StretchDirection="DownOnly" 
+               Grid.Row="1" Grid.Column="1" />
+            <TextBlock HorizontalAlignment="Center" 
+                       UseLayoutRounding="True"
+                       Text="Magic Button"  
+                       Margin="0,50,0,0"
+                       FontSize="24" 
+                       Foreground="{DynamicResource HIODarkFont}" />
+
+            <TextBlock Text="Fill Username and Password just by one click"
+                       FontSize="18"
+                       Foreground="{DynamicResource HIOBrightFont}"
+                       HorizontalAlignment="Center" 
+                       Margin="0,20,0,0"/>
+        </StackPanel>
+    
+</UserControl>

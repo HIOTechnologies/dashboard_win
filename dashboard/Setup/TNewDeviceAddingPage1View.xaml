@@ -1,0 +1,257 @@
+﻿<UserControl x:Class="HIO.Setup.TNewDeviceAddingPage1View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.Setup"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             xmlns:Settings="clr-namespace:HIO.ViewModels.Settings"
+             xmlns:Gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:hio="clr-namespace:HIO.Backend"
+             mc:Ignorable="d" 
+             d:DesignHeight="565" d:DesignWidth="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource HIOWindowTitle}" 
+                   Text="Add a new device" 
+                   VerticalAlignment="Center"
+                   FontSize="24"
+                   />
+        <Grid Grid.Row="1" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*" x:Name="BridgeListContainer"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="0px" x:Name="BluetoothListContainer"/>
+                </Grid.RowDefinitions>
+                <local:THIOBridge Grid.Row="0"  
+                                    VerticalAlignment="Center" 
+                                    DockPanel.Dock="Top" 
+                                    Cursor="Hand"
+                                    MouseLeftButtonDown="BridgeExpander_Clicked"/>
+                <Border Grid.Row="1"
+                            BorderThickness="0,1,0,1" 
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Center" 
+                            BorderBrush="{StaticResource HIOLineBright}" 
+                            Margin="0,0,0,5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Ctrls:TLinkButton  Grid.Row="0" Command="{Binding Commands.LoadItems}" 
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Foreground="{Binding ColorSearch}"
+                                            IsEnabled="{Binding DisSearch}"
+                                           FontSize="11"
+                                   Margin="5,0,0,0" 
+                                   Content="Find New HIO" FontFamily="Segoe UI"/>
+                        <ListBox Grid.Row="1" 
+                             ItemsSource="{Binding Items}"
+                             SelectedItem="{Binding SelectedItem}"
+                             BorderThickness="0" Background="Transparent" 
+                             HorizontalAlignment="Stretch" 
+                             HorizontalContentAlignment="Stretch"
+                             VerticalContentAlignment="Stretch"
+                             Foreground="{DynamicResource HIOBrightFont}"
+                             Width="180" 
+                                
+                             Margin="0,0,0,0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding Commands.MoveNextPage}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <!--<ListBox.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding Commands.MoveNextPage}"/>
+                            </ListBox.InputBindings>-->
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border x:Name="Border" Padding="3,1" BorderThickness="1" BorderBrush="Transparent">
+                                                    <ContentPresenter/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="Border" Property="Background" Value="#FFf5f5f5"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter TargetName="Border" Property="Background" Value="#FFebebeb"/>
+                                                    </Trigger>
+                                                    <!--<Trigger Property="IsEnabled" Value="false">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </Trigger>-->
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type Settings:TDevice}">
+                                    <DockPanel>
+                                        <Separator x:Name="Separator" DockPanel.Dock="Top" Background="{DynamicResource HIOLineBright}"/>
+                                        <DockPanel Height="25">
+                                            <Ctrls:TSignalPresenter DockPanel.Dock="Right" VerticalAlignment="Center" SignalValue="{Binding SignalValue}"/>
+                                            <TextBlock Text="{Binding Title}" VerticalAlignment="Center" />
+                                        </DockPanel>
+                                    </DockPanel>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                            <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                        <Image DockPanel.Dock="Bottom"
+                           Grid.Row="2"
+                           VerticalAlignment="Top"
+                           Visibility="{Binding IsConnecting,Converter={Ctrls:TBoolToVisibilityConverter}}"
+                           Gif:ImageBehavior.AnimateInDesignMode="False"
+                           StretchDirection="DownOnly"
+                           Gif:ImageBehavior.AnimatedSource="/HIO;component/Resources/loading10.gif"/>
+
+
+                    </Grid>
+                </Border>
+                <Label Grid.Row="2"    
+                                   HorizontalAlignment="Center" 
+                                   Background="Transparent" 
+                                   Cursor="Hand"
+                                   Visibility="{Binding Source={x:Static hio:HIOStaticValues.IsBLESupported}, Converter={Ctrls:TBoolToVisibilityConverter}}"
+                                   MouseLeftButtonDown="BluetoothExpander_Clicked">
+                    <StackPanel Orientation="Horizontal" >
+                        <Image StretchDirection="DownOnly" 
+                       UseLayoutRounding="True"
+                       Width="16" 
+                       Height="16" Margin="-25,10,0,0"
+                       Stretch="Uniform" 
+                       VerticalAlignment="Center" 
+                       Source="/HIO;component/Resources/Bluetooth.png" />
+                        <TextBlock Margin="4,10,0,0" FontSize="15" Foreground="{DynamicResource HIODarkFont  }" FontFamily="Segoe UI" Text="Bluetooth" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <Border Grid.Row="3"
+                            BorderThickness="0,1,0,0" 
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Center" 
+                            Visibility="{Binding Source={x:Static hio:HIOStaticValues.IsBLESupported}, Converter={Ctrls:TBoolToVisibilityConverter}}"
+                            BorderBrush="{StaticResource HIOLineBright}" 
+                            Margin="0,0,0,5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Ctrls:TLinkButton  Grid.Row="0" Command="{Binding Commands.LoadBluetoothItems}" 
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Foreground="{Binding ColorSearch}"
+                                           IsEnabled="{Binding DisSearch}"
+                                           FontSize="11"
+                                   Margin="5,0,0,0" 
+                                   Content="Find New HIO" FontFamily="Segoe UI"/>
+                        <ListBox Grid.Row="1" 
+                             ItemsSource="{Binding BluetoothItems}"
+                             SelectedItem="{Binding SelectedItem}"
+                             BorderThickness="0" Background="Transparent" 
+                             HorizontalAlignment="Stretch" 
+                             HorizontalContentAlignment="Stretch"
+                             VerticalContentAlignment="Stretch"
+                             Foreground="{DynamicResource HIOBrightFont}"
+                             Width="180" 
+                                
+                             Margin="0,0,0,0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding Commands.MoveNextPage}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <!--<ListBox.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding Commands.MoveNextPage}"/>
+                            </ListBox.InputBindings>-->
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border x:Name="Border" Padding="3,1" BorderThickness="1" BorderBrush="Transparent">
+                                                    <ContentPresenter/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="Border" Property="Background" Value="#FFf5f5f5"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter TargetName="Border" Property="Background" Value="#FFebebeb"/>
+                                                    </Trigger>
+                                                    <!--<Trigger Property="IsEnabled" Value="false">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </Trigger>-->
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type Settings:TDevice}">
+                                    <DockPanel>
+                                        <Separator x:Name="Separator" DockPanel.Dock="Top" Background="{DynamicResource HIOLineBright}"/>
+                                        <DockPanel Height="25">
+                                            <Ctrls:TSignalPresenter DockPanel.Dock="Right" VerticalAlignment="Center" SignalValue="{Binding SignalValue}"/>
+                                            <TextBlock Text="{Binding Title}" VerticalAlignment="Center" />
+                                        </DockPanel>
+                                    </DockPanel>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                            <Setter TargetName="Separator" Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                        <Image DockPanel.Dock="Bottom"
+                           Grid.Row="2"
+                           VerticalAlignment="Top"
+                           Visibility="{Binding IsConnecting,Converter={Ctrls:TBoolToVisibilityConverter}}"
+                           Gif:ImageBehavior.AnimateInDesignMode="False"
+                           StretchDirection="DownOnly"
+                           Gif:ImageBehavior.AnimatedSource="/HIO;component/Resources/loading10.gif"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <Button  Content="Continue" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                DockPanel.Dock="Bottom"
+                Command="{Binding Commands.MoveNextPage}"
+                Grid.Row="2" 
+                MinWidth="78"
+                    Height="28"
+                />
+    </Grid>
+
+</UserControl>

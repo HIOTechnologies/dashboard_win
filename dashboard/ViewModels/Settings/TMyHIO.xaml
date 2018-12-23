@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="HIO.ViewModels.Settings.TMyHIO"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels.Settings"
+                          xmlns:Ctrls="clr-namespace:HIO.Controls"
+             xmlns:Gif="http://wpfanimatedgif.codeplex.com"
+             Background="White"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="800">
+    <Grid  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="391*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="10px"/>
+            <RowDefinition Height="80px"/>
+            <RowDefinition Height="10px"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Ctrls:TEditableLabel FontSize="14" Text="{Binding MyHIOTitle}" 
+                   Foreground="{DynamicResource HIOBrightFont}" 
+                   Grid.Row="1" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Left"
+                   MaxLength="16"
+                   EditCommand="{Binding Commands.UpdateDeviceName}"
+                   Grid.ColumnSpan="2" Margin="-2,3,0,3"/>
+        <TextBlock FontSize="12" Text="{Binding MyHIOVersion}" 
+                   Foreground="{DynamicResource HIOBrightFont}" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,3"/>
+        <TextBlock FontSize="12" Text="{Binding MyHIOMac}" Grid.Row="3" Foreground="{DynamicResource HIOBrightFont}" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,3"/>
+        <Separator Background="{StaticResource HIOLineBright}" 
+                   Grid.Row="4" 
+                   Grid.ColumnSpan="2"/>
+        <Ctrls:TLinkButton Content="Add a new device"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left" 
+                           Height="24" 
+                           MinWidth="120" 
+                           FontSize="18"
+                           Foreground="{DynamicResource HIODarkFont}"
+                           Grid.Row="5" 
+                           Command="{Binding Commands.AddNewDevice}" 
+                           Grid.ColumnSpan="2"/>
+        <Separator Background="{StaticResource HIOLineBright}" 
+                   Grid.Row="6" 
+                   Grid.ColumnSpan="2"/>
+
+        <TextBlock FontSize="14" Text="Paired Devices" VerticalAlignment="Center" 
+                   Foreground="{StaticResource HIODarkFont}" Grid.Row="7" Grid.ColumnSpan="2" Margin="0,3"/>
+        <DockPanel Grid.Row="8" Grid.ColumnSpan="2">
+            <Image DockPanel.Dock="Bottom"
+                           Visibility="{Binding IsConnecting,Converter={Ctrls:TBoolToVisibilityConverter}}"
+                           Gif:ImageBehavior.AnimateInDesignMode="False"
+                           Margin="0,10,0,10"
+                           StretchDirection="DownOnly"
+                           Gif:ImageBehavior.AnimatedSource="/HIO;component/Resources/loading10.gif"/>
+            <ItemsControl ItemsSource="{Binding Items}" MinHeight="25"  >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel >
+                            <Separator x:Name="PairedDeviceSeparator" DockPanel.Dock="Top" Margin="5,0" Background="{DynamicResource HIOLineBright}"/>
+                            <local:TDeviceView HorizontalAlignment="Stretch" />
+                        </DockPanel>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource PreviousData}}" Value="{x:Null}">
+                                <Setter Property="Visibility" TargetName="PairedDeviceSeparator" Value="Collapsed"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+    </Grid>
+</UserControl>

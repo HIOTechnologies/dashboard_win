@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="HIO.ViewModels.Accounts.TAddNewAccountContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels.Accounts"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             Background="{DynamicResource HIOGigari}"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="380">
+    <Grid Margin="30,20,60,20" VerticalAlignment="Center">
+        <Grid.Resources>
+            <Style TargetType="{x:Type Ctrls:TTextBox}">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0px"/>
+            <RowDefinition Height="72px"/>
+            <RowDefinition Height="72px"/>
+            <RowDefinition Height="72px"/>
+            <RowDefinition Height="72px"/>
+            <RowDefinition Height="72px"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="Add a new account" 
+                               HorizontalAlignment="Center"
+                              Grid.Row="1"
+                   VerticalAlignment="Center" Margin="0,0,0,30" Foreground="#FFFFFDF4" FontSize="20" d:IsLocked="True"/>
+
+        <Ctrls:TTextBox Text="{Binding AccountItem.Name, UpdateSourceTrigger=PropertyChanged}" 
+                        Grid.Row="2" 
+                        Background="{DynamicResource HIOGigari}"
+                        MaxLength="64"
+                        CaretBrush="White"
+                        x:Name="TXTtitle"
+                        Placeholder="Title"
+                        GotFocus="TTextBox_GotFocus"
+                        VerticalAlignment="Center" d:IsLocked="True">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Save}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TTextBox>
+        <Button 
+               Grid.Row="2"
+                x:Name="titleRequiredImage"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image 
+                        x:Name="titleRequiredImage"
+                        Stretch="None"    
+                        HorizontalAlignment="Left" 
+                        RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                        Source="/HIO;component/Resources/Require2.png" 
+                        Cursor="IBeam"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <!--<Ctrls:AutoFilteredComboBox Text="{Binding AccountItem.Username, UpdateSourceTrigger=PropertyChanged}"
+                         PreviewTextInput="Cbo_Username_PreviewTextInput"
+                         x:Name="Cbo_Username"
+                        Foreground="Black"
+                         Background="#00000000"
+                         IsTextSearchCaseSensitive="False"
+                         IsEditable="True"
+                         IsTextSearchEnabled="True"
+                         
+                         Grid.Row="3" 
+                         
+                         ItemsSource="{Binding Parent.Items}"
+                         DisplayMemberPath="Name"
+                         SelectedValuePath="Name"
+                         VerticalAlignment="Center" d:IsLocked="True">
+            
+        </Ctrls:AutoFilteredComboBox>-->
+
+        <Ctrls:TAutoCompleteTextbox Text="{Binding AccountItem.Username, UpdateSourceTrigger=PropertyChanged}"
+                         CaretBrush="White"
+                        MaxLength="64"
+                         x:Name="Cbo_Username"
+                         Foreground="White"
+                         Background="#00000000"
+                         DropDownBackground="White"
+                         Grid.Row="3" 
+                         Placeholder="Username" 
+                         ItemsSource="{Binding Parent.Items}"
+                         DisplayMemberPath="Username"
+                         SelectedValuePath="Username"
+                         VerticalAlignment="Center">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Save}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TAutoCompleteTextbox>
+
+
+
+        <Ctrls:TPasswordBox Text="{Binding AccountItem.Password, UpdateSourceTrigger=PropertyChanged}" 
+                            Foreground="White"
+                            Background="{DynamicResource HIOGigari}"
+                            CaretBrush="White"
+                        Grid.Row="4" 
+                            MaxLength="64"
+                            x:Name="TXTpass"
+                            GotFocus="TPasswordBox_GotFocus"
+                        Placeholder="Password" VerticalAlignment="Center" d:IsLocked="True">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Save}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TPasswordBox>
+        <Button 
+               Grid.Row="4"
+                x:Name="passRequiredImage"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Stretch="Uniform"     
+                           Width="16"
+                           HorizontalAlignment="Left"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                                       Source="/HIO;component/Resources/require3.png" Cursor="IBeam"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Ctrls:TTextBox Text="{Binding AccountItem.Url, UpdateSourceTrigger=PropertyChanged}"
+                        CaretBrush="White"
+                        Background="{DynamicResource HIOGigari}"
+                        Grid.Row="5" 
+                        MaxLength="256"
+                        x:Name="TXTurl"
+                        GotFocus="TTextBox_GotFocus_1"
+                        Placeholder="Url" VerticalAlignment="Center" d:IsLocked="True">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Save}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TTextBox>
+        <Button 
+               Grid.Row="5"
+                x:Name="urlRequiredImage"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Stretch="None"
+                           x:Name="urlRequiredImage"
+                           HorizontalAlignment="Left"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                                       Source="/HIO;component/Resources/Require2.png" Cursor="IBeam"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Command="{Binding Commands.Save}"
+                Background="{DynamicResource HIOGigari}"
+                Foreground="White"
+                Click="Button_Click"
+                BorderBrush="White"
+                FontSize="15"
+                Height="30" 
+                Margin="0,  80,0,0"
+                Grid.Row="6" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center" MinWidth="120" 
+                Content="Save" d:IsLocked="True"/>
+        <!--<ListBox Grid.Row="4" Grid.RowSpan="5" ItemsSource="{Binding Parent.Items}" Visibility="{Binding }" Background="White">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" Margin="5"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+    </Grid>
+</UserControl>

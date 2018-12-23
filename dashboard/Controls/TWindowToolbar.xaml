@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="HIO.Controls.TWindowToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.Controls"
+             x:Name="Root"
+             mc:Ignorable="d" 
+             Height="35" 
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Top"
+             d:DesignWidth="250" 
+             UseLayoutRounding="True">
+
+    <Grid >
+        <Rectangle x:Name="TitleBar" 
+                   Fill="Transparent" 
+                   Grid.RowSpan="2"  
+                   MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"/>
+        <Grid Width="90" Margin="0,0,10,5" HorizontalAlignment="Right" 
+              VerticalAlignment="Bottom" 
+              Grid.Column="1" 
+              Grid.Row="1" 
+              Visibility="{Binding ElementName=Root,Path=AllowShowToolbox,Converter={local:TBoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <local:TInteractiveButton Visibility="{Binding ElementName=Root,Path=AllowShowMinimize,Converter={local:TBoolToVisibilityConverter}}" 
+                                      Click="TInteractiveButton_Click" 
+                                      MouseOverAffectOpacity="True"
+                                      Cursor="Hand"
+                                      Opacity="0.5"
+                                      x:Name="Btn_Min" 
+                                      Width="16" 
+                                      Height="16"  
+                                      NormalImage="/HIO;component/Resources/Window/Window.Minimize_16px.png"  />
+            <local:TInteractiveButton Visibility="{Binding ElementName=Root,Path=AllowShowMaximizeRestore,Converter={local:TBoolToVisibilityConverter}}" 
+                                      Click="TInteractiveButton_Click" 
+                                      MouseOverAffectOpacity="True"
+                                      Cursor="Hand"
+                                      Opacity="0.5"
+                                      x:Name="Btn_MaxRestore" 
+                                      Width="16" Height="16" 
+                                      Grid.Column="1" 
+                                      NormalImage="{Binding ElementName=Root,Path=WindowState,Converter={local:TWindowStateToImageConverter MaximizeImage='/HIO;component/Resources/Window/Window.Restore_16px.png',NormalImage='/HIO;component/Resources/Window/Window.Maximize_16px.png'}}"  />
+            <local:TInteractiveButton Visibility="{Binding AllowShowClose, Converter={local:TBoolToVisibilityConverter}, ElementName=Root}" 
+                                      Click="TInteractiveButton_Click" 
+                                      MouseOverAffectOpacity="True"
+                                      Cursor="Hand"
+                                      Opacity="0.5"
+                                      x:Name="Btn_Close"
+                                      Width="16"
+                                      Height="16" 
+                                      Grid.Column="2" 
+                                      NormalImage="/HIO;component/Resources/Window/Window.Close_16px.png"/>
+        </Grid>
+
+    </Grid>
+
+</UserControl>

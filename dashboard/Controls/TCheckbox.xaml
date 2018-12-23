@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HIO.Controls">
+    <Style TargetType="{x:Type local:TCheckbox}">
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+
+        <Setter Property="Foreground" Value="{DynamicResource HIOBrightFont}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TCheckbox}">
+                    <DockPanel >
+                        <Image IsHitTestVisible="True" 
+                               DockPanel.Dock="Left"
+                               Stretch="None" 
+                               UseLayoutRounding="True"
+                               SnapsToDevicePixels="True"
+                               VerticalAlignment="Center"
+                               Source="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=IsChecked,Converter={local:TBoolToImageSourceConverter TrueImage='pack://application:,,,/HIO;component/Resources/Tick Box_16px.png',FalseImage='pack://application:,,,/HIO;component/Resources/Unchecked Checkbox_16px.png'}}"/>
+                        <ContentPresenter Margin="15,0,0,0" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

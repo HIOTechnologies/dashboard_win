@@ -1,0 +1,30 @@
+﻿<Ctrls:TWindow x:Class="HIO.Extentions.TExtention13View"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:Ctrls="clr-namespace:HIO.Controls"
+               xmlns:local="clr-namespace:HIO.Extentions"
+               AllowShowMaximizeRestore="False"
+               AllowShowMinimize="False"
+               ResizeMode="NoResize"
+               mc:Ignorable="d"
+               Title="HIO PopUp" 
+                ShowActivated="False"
+               ShowInTaskbar="False"
+               Topmost="True"
+               Height="200" Width="410">
+    <StackPanel Margin="30,20,30,20">
+            <Image DockPanel.Dock="Left" RenderOptions.BitmapScalingMode="HighQuality"
+               Source="/HIO;component/Resources/1.png" 
+               Height="35" 
+                   
+               HorizontalAlignment="Left" />
+        <TextBlock Foreground="{DynamicResource HIOBrightFont}" 
+                        Margin="0,20,0,0"
+                   VerticalAlignment="Center"
+                   TextWrapping="WrapWithOverflow"
+                   FontSize="14"
+                        Text="{Binding Text}"/>
+    </StackPanel>
+</Ctrls:TWindow>

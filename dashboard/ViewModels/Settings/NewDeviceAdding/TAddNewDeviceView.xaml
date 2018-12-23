@@ -1,0 +1,47 @@
+﻿<Ctrls:TWindow x:Class="HIO.ViewModels.Settings.NewDeviceAdding.TAddNewDeviceView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HIO.ViewModels.Settings.NewDeviceAdding"
+        xmlns:Setup="clr-namespace:HIO.Setup"
+               xmlns:Ctrls="clr-namespace:HIO.Controls"
+               x:Name="Root"
+          
+        mc:Ignorable="d"
+        Title="Add a new device" >
+    <Grid>
+        <Ctrls:TProgressBar Height="3" 
+                     Value="{Binding ProgressPercent,FallbackValue=50}" 
+                     UseLayoutRounding="True"
+                     VerticalAlignment="Top" 
+                     Margin="0,5,0,0"/>
+
+        <Ctrls:TAnimatedContentControl Content="{Binding ActivePage}" AnimationDuration="500" Margin="0,50,0,0">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type Setup:TNewDeviceAddingPage1}">
+                    <Setup:TNewDeviceAddingPage1View/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type Setup:TNewDeviceAddingPage2}">
+                    <Setup:TNewDeviceAddingPage2View/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type Setup:TNewDeviceAddingPage3}">
+                    <Setup:TNewDeviceAddingPage3View/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type Setup:TNewDeviceAddingPage4}">
+                    <Setup:TNewDeviceAddingPage4View/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </Ctrls:TAnimatedContentControl>
+        <Grid    Visibility="{Binding Message,Converter={Ctrls:TTextLengthToVisibilityConverter}}">
+            <Ctrls:TInnerMessageBox Text="{Binding Message,FallbackValue='Confirm your email address to access HIOs features.'}"
+                                VerticalContentAlignment="Center"
+                                 OKCommand="{Binding Commands.ErrorOK}"
+                                FontSize="15"
+                                VerticalAlignment="Bottom" 
+                                Margin="0,0,0,30"
+                                MinHeight="80px"
+                                Foreground="#FFD9AFA7"/>
+        </Grid>
+    </Grid>
+</Ctrls:TWindow>

@@ -1,0 +1,96 @@
+﻿<Ctrls:TWindow x:Class="HIO.ViewModels.Security.TSetupPersonalPinView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:local="clr-namespace:HIO.ViewModels.Security"
+                xmlns:Ctrls="clr-namespace:HIO.Controls"
+                xmlns:Gif="http://wpfanimatedgif.codeplex.com"
+                mc:Ignorable="d"
+                Title="Change your personal pin" 
+                AllowShowMaximizeRestore="False"
+               AllowShowMinimize="False"
+               Height="350"
+               Width="500">
+    <Grid>
+        <Grid Visibility="{Binding AllSet, Converter={Ctrls:TBoolToVisibilityConverter Reverse=True}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+            <TextBlock 
+                   x:Name="Title" 
+                   Text="Set up your personal pin"
+                   Style="{StaticResource HIOWindowTitle}"
+                   VerticalAlignment="Bottom"
+                   Grid.Row="0"
+                   Grid.Column="1" />
+            <Viewbox
+            Width="{Binding ElementName=Title, Path=ActualWidth}"
+            VerticalAlignment="Top"
+            Grid.Row="2"
+            Grid.Column="1">
+                <TextBlock 
+                   Text="Your pin code must be 6 characters"
+                   Foreground="{DynamicResource HIOBrightFont}"/>
+
+            </Viewbox>
+            <Ctrls:TPasswordBox Text="{Binding NewPin,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Row="3" Placeholder="Enter your personal pin" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding ActualWidth,ElementName=Title}" MaxLength="6"/>
+            <Ctrls:TPasswordBox Text="{Binding ReEnterNewPin,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Row="4" Placeholder="Re-enter your personal pin" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding ActualWidth,ElementName=Title}" MaxLength="6" />
+            <!--<Ctrls:TTextbox Grid.Row="2" Placeholder="Title" Grid.Column="1" VerticalAlignment="Bottom" />
+        <Ctrls:TTextbox Grid.Row="3" Placeholder="Username" Grid.Column="1" VerticalAlignment="Bottom" />
+        <Ctrls:TPasswordbox Grid.Row="4" Placeholder="Password" Grid.Column="1" VerticalAlignment="Bottom" />
+        <Ctrls:TTextbox Grid.Row="5" Placeholder="Url" Grid.Column="1" VerticalAlignment="Bottom" />-->
+            <Button Content="Apply" 
+                Command="{Binding Commands.Apply}"
+                 MinWidth="78"
+                MinHeight="28"
+                Grid.Row="6" 
+                Grid.Column="1"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center">
+            </Button>
+            <Ctrls:TInnerMessageBox
+                Grid.Row="6"
+                Grid.ColumnSpan="3"
+                Text="{Binding ErrorMessage}"
+                OKCommand="{Binding Commands.ErrorOK}"
+                Foreground="#FFD9AFA7"
+                VerticalAlignment="Stretch"
+                Visibility="{Binding ErrorMessage,Converter={Ctrls:TTextLengthToVisibilityConverter}}">
+            </Ctrls:TInnerMessageBox>
+    </Grid>
+
+        <Grid Visibility="{Binding AllSet, Converter={Ctrls:TBoolToVisibilityConverter}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Gif:ImageBehavior.AnimatedSource="/HIO;component/Resources/tick2.gif"  
+               Gif:ImageBehavior.AnimateInDesignMode="True"
+               Gif:ImageBehavior.RepeatBehavior="1x"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Grid.Row="1"
+               VerticalAlignment="Bottom"
+               StretchDirection="DownOnly" />
+        <TextBlock Text="All set!" 
+                       Grid.Row="2" 
+                       Foreground="{DynamicResource HIOBrightFont}"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"/>
+    </Grid>
+    </Grid>
+</Ctrls:TWindow>

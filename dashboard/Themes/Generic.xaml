@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Ctrls="clr-namespace:HIO.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/HIO;component/Controls/Public.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TWindow.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TTextbox.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TAutoCompleteTextbox.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TContextMenu.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/Button.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TSlider.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TCheckbox.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TPasswordbox.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TLinkButton.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TComboBox.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TPinEditor.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/Expander.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TProgressBar.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/ListBox.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TAnimatedContentControl.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TImportButton.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TSetupPageContentControl.xaml"/>
+        <ResourceDictionary Source="/HIO;component/Controls/TProximityEditor.xaml"/>
+        
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

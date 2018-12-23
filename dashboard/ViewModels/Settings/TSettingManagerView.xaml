@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="HIO.ViewModels.Settings.TSettingManagerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.ViewModels.Settings"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             xmlns:Gif="http://wpfanimatedgif.codeplex.com"
+             mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             d:DesignHeight="600" d:DesignWidth="500">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Commands.loading}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <UserControl.Resources>
+        <Style TargetType="Separator">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Background" Value="{StaticResource HIOLineDark}"/>
+        </Style>
+        <Style TargetType="{x:Type Ctrls:TLinkButton}">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <!--<Setter Property="FontWeight" Value="Bold"/>-->
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="MinWidth" Value="120"/>
+        </Style>
+
+
+    </UserControl.Resources>
+    <ScrollViewer Margin="0,78,5,30" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >
+        <Grid Margin="30,0,70,30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Expander Header="My HIO" FontSize="18" VerticalAlignment="Stretch" IsExpanded="{Binding Exapnder}" Margin="10,19"  >
+                <local:TMyHIO/>
+            </Expander>
+
+            <Separator Grid.Row="1"/>
+
+            <Ctrls:TLinkButton Margin="10,19" FontSize="18" Content="Import" 
+                               Foreground="{DynamicResource HIODarkFont}"
+                           Grid.Row="2"
+                           Command="{Binding Commands.Import}" />
+            <Separator Grid.Row="3"/>
+            <Ctrls:TLinkButton Margin="10,19" FontSize="18" Content="Backup" 
+                                 Foreground="{DynamicResource HIODarkFont}"
+                           Grid.Row="4"
+                           Command="{Binding Commands.Backup}" />
+            <TextBlock    Margin="0,0,0,19" Grid.Row="4" Text="{Binding ProcessExport}" FontSize="16px"  HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <Separator Grid.Row="5"/>
+            <Ctrls:TLinkButton Margin="10,19" FontSize="18" Content="Reset" 
+                                 Foreground="{DynamicResource HIODarkFont}"
+                           Grid.Row="6"
+                           Command="{Binding Commands.Reset}" />
+            <Separator Grid.Row="7"/>
+            <Ctrls:TLinkButton Margin="10,19" FontSize="18" Content="Help and support" 
+                           Grid.Row="8"
+                                 Foreground="{DynamicResource HIODarkFont}"
+                           Command="{Binding Commands.HelpAndSupport}" />
+            <Separator Grid.Row="9"/>
+            <Ctrls:TLinkButton Margin="10,19" FontSize="18" Content="About us" 
+                           Grid.Row="10"
+                                 Foreground="{DynamicResource HIODarkFont}"
+                           Command="{Binding Commands.AboutUs}" />
+        </Grid>
+    </ScrollViewer>
+</UserControl>

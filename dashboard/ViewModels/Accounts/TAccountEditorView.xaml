@@ -1,0 +1,130 @@
+﻿<Ctrls:TWindow x:Class="HIO.ViewModels.Accounts.TAccountEditorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HIO.ViewModels"
+        xmlns:Ctrls="clr-namespace:HIO.Controls"
+        mc:Ignorable="d"
+             
+               
+               Background="White"
+        Title="Edit your account" 
+               AllowShowMaximizeRestore="False"
+               AllowShowMinimize="False"
+               UseLayoutRounding="True">
+    <Grid >
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Edit your account"
+                   Style="{StaticResource HIOWindowTitle}"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Grid.Column="1" />
+
+        <Ctrls:TTextBox Grid.Row="1"  
+                        GotFocus="TTextBox_GotFocus" 
+                        Text="{Binding EditingObject.Name}" 
+                        SnapsToDevicePixels="True"
+                        Placeholder="Title" 
+                        MaxLength="64"
+                        Grid.Column="1" 
+                        VerticalAlignment="Center">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Apply}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TTextBox>
+
+        <Button Grid.Column="1"
+               Grid.Row="1"
+                
+                x:Name="titleRequiredImage"
+                HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Stretch="None"     
+                           HorizontalAlignment="Left"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                                       Source="/HIO;component/Resources/Require.png" Cursor="IBeam"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <!--  <Ctrls:TComboBox Text="{Binding EditingObject.Username, UpdateSourceTrigger=PropertyChanged}"
+                         PreviewKeyUp="TComboBox_PreviewKeyUp"
+-->
+
+        <Ctrls:TAutoCompleteTextbox x:Name="Cbo_Username" MaxLength="64"
+                         Text="{Binding EditingObject.Username, UpdateSourceTrigger=PropertyChanged}"
+                         Grid.Column="1"
+                         Grid.Row="2" 
+                         Placeholder="Username" 
+                         ItemsSource="{Binding Items}"
+                         DisplayMemberPath="Username"
+                         SelectedValuePath="Username"
+                         VerticalAlignment="Center"
+                          >
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Apply}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TAutoCompleteTextbox>
+
+        <Ctrls:TPasswordBox Text="{Binding EditingObject.Password,UpdateSourceTrigger=PropertyChanged}" 
+                            Grid.Row="3"  MaxLength="64"
+                            ShowPassword="{Binding ShowPassword,Mode=TwoWay}"
+                            KeepStateOfShowPassword="True"
+                            Placeholder="Password" 
+                            Grid.Column="1" 
+                            VerticalAlignment="Center">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Apply}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TPasswordBox>
+
+        <Ctrls:TTextBox Grid.Row="4" 
+                        UseLayoutRounding="True" MaxLength="256"
+                        Text="{Binding EditingObject.Url,UpdateSourceTrigger=PropertyChanged}"
+                        GotFocus="TTextBox_GotFocus_1"
+                        Placeholder="Url" 
+                        Grid.Column="1" 
+                        VerticalAlignment="Center" >
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Commands.Apply}" Key="Enter" />
+            </TextBox.InputBindings>
+        </Ctrls:TTextBox>
+        <Button Grid.Column="1"
+                Visibility="Hidden"
+               Grid.Row="4"
+                 x:Name="urlRequiredImage"
+                HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Stretch="None" 
+                           HorizontalAlignment="Left" 
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                                       Source="/HIO;component/Resources/Require.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Apply" 
+                Command="{Binding Commands.Apply}"
+                IsEnabled="{Binding IsSaving, Converter={Ctrls:TInverseBooleanConverter}}"
+                MinWidth="78"
+                MinHeight="28"
+                Grid.Row="5" 
+                Grid.Column="1"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" />
+
+    </Grid>
+</Ctrls:TWindow>

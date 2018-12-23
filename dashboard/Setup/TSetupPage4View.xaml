@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="HIO.Setup.TSetupPage4View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.Setup"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="1024">
+    <!--<Image Source="/HIO;component/Resources/Setup/Setup4.jpg" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Stretch="None" 
+           Width="1024"
+           Height="640"
+                />-->
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <Image Source="/HIO;component/Resources/SetupWizard/MonitorWithLock.png" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center"
+               UseLayoutRounding="True"
+               RenderOptions.BitmapScalingMode="HighQuality"
+               Stretch="Uniform" 
+               StretchDirection="DownOnly"
+               Grid.Row="1" Grid.Column="1" />
+        <TextBlock HorizontalAlignment="Center" 
+                       UseLayoutRounding="True"
+                       Text="Magic Lock"  
+                       Margin="0,50,0,0"
+                       FontSize="24px" 
+                       Foreground="{DynamicResource HIODarkFont}" />
+
+        <TextBlock Text="Lock your PC automatically when you step away from it"
+                       FontSize="18"
+                       Foreground="{DynamicResource HIOBrightFont}"
+                       HorizontalAlignment="Center" 
+                       Margin="0,20,0,0"/>
+    </StackPanel>
+
+</UserControl>

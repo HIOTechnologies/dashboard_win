@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HIO.Controls">
+    <!--BasedOn="{StaticResource {x:Type TextBox}}"-->
+    <Style TargetType="{x:Type local:TTextBox}" >
+        <Setter Property="BorderBrush" Value="{DynamicResource HIOBorderTextBox}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Padding" Value="0,0,0,2"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="Foreground" Value="{DynamicResource HIOTextBoxForeground}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TTextBox}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
+                            Focusable="False"
+                            Padding="{TemplateBinding Padding}">
+                        <Grid >
+                            <ScrollViewer Margin="0"  
+                                          x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden" 
+                                          VerticalScrollBarVisibility="Hidden"/>
+                            <!--<TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                Background="{x:Null}"
+                                                BorderThickness="0"
+                                                BorderBrush="{x:Null}"/>-->
+                            <TextBlock Text="{TemplateBinding Placeholder}"
+                                       x:Name="PART_PlaceHolder"
+                                       IsHitTestVisible="False"
+                                       Focusable="False"
+                                       Margin="5,0,0,0"
+                                       Opacity="0.5"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       Foreground="{TemplateBinding Foreground}"/>
+
+                            <!--Visibility="{Binding Path=Text,RelativeSource={RelativeSource TemplatedParent},Converter={local:TTextLengthToVisibilityConverter Reverse=True}}"-->
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

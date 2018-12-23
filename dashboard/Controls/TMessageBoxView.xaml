@@ -1,0 +1,29 @@
+﻿<local:TWindow x:Class="HIO.Controls.TMessageBoxView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HIO.Controls"
+               AllowShowMinimize="False"
+               AllowShowMaximizeRestore="False"
+        mc:Ignorable="d"
+        Title="TMessageBoxView" 
+               SizeToContent="WidthAndHeight"
+               MinHeight="250" 
+               Topmost="True"
+               MinWidth="450">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70px"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="Txt_Message" Margin="40,10,40,0" Text="Sample ..." VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource HIOBrightFont}" FontSize="14px" TextWrapping="Wrap"/>
+        <StackPanel Orientation="Horizontal" MinHeight="22" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Button MinWidth="68" Margin="0" x:Name="Btn_Left" />
+            <Button  MinWidth="68" Margin="5,0" x:Name="Btn_Center" />
+            <Button  MinWidth="68" Margin="0" x:Name="Btn_Right" />
+
+        </StackPanel>
+    </Grid>
+</local:TWindow>

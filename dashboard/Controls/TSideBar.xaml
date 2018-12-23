@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="HIO.Controls.TSideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO"
+             xmlns:Ctrls="clr-namespace:HIO.Controls"
+             xmlns:VM="clr-namespace:HIO.ViewModels"
+             x:Name="root"
+             mc:Ignorable="d" 
+             Width="100"
+             d:DesignHeight="800"   >
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Ctrls:TSideBarButton}" >
+            <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Ctrls:TSideBar}}}"/>
+            <Setter Property="Title" Value="{Binding Title}"/>
+            <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}"/>
+            <Setter Property="NormalImage" Value="{Binding NormalImageUrl}"/>
+            <Setter Property="HoverImage" Value="{Binding HoverImageUrl}"/>
+        </Style>
+    </UserControl.Resources>
+    <Border CornerRadius="1" Background="White" Padding="0,0,0,0" >
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="10" Direction="360" Opacity="0.08" BlurRadius="37"/>
+            <!--<DropShadowEffect ShadowDepth="0" Direction="360" BlurRadius="40" Opacity="0.08"/>-->
+        </Border.Effect>
+        <DockPanel  LastChildFill="True" FocusManager.IsFocusScope="True">
+            <Grid Margin="20,10,20,10" 
+                  Cursor="Hand"
+                  DockPanel.Dock="Top" 
+                  MouseLeftButtonUp="Grid_MouseLeftButtonUp"
+                  Height="70" 
+                  UseLayoutRounding="True">
+                <!--<Button VerticalAlignment="Center" Click="Button_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">-->
+
+                <Grid x:Name="Grd_Logo_Container"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40px"/>
+                        <ColumnDefinition Width="0px" x:Name="Img_HIO_Container"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Source="{Binding ElementName=root,Path=IsConnected,Converter={Ctrls:TBoolToImageSourceConverter TrueImage='/HIO;component/Resources/LogoCollapsedHover.png',FalseImage='/HIO;component/Resources/LogoCollapsedNormal.png'},FallbackValue='/HIO;component/Resources/LogoCollapsedHover.png'}"-->
+                    <!--Source="/HIO;component/Resources/LogoCollapsedHover.png"-->
+                    <Image x:Name="Img_Logo" 
+                               Width="40"
+                               DockPanel.Dock="Left"
+                               VerticalAlignment="Center"
+                               Source="{Binding ElementName=root,Path=IsConnected,Converter={Ctrls:TBoolToImageSourceConverter TrueImage='/HIO;component/Resources/LogoCollapsedHover.png',FalseImage='/HIO;component/Resources/LogoCollapsedNormal.png'},FallbackValue='/HIO;component/Resources/LogoCollapsedHover.png'}"
+                               RenderOptions.BitmapScalingMode="HighQuality" 
+                                          />
+                    <Viewbox Stretch="Uniform" Height="40" HorizontalAlignment="Left" Margin="10,-3,0,0" Grid.Column="1" VerticalAlignment="Center">
+                        <Image x:Name="Img_HIO" 
+                               Width="100"
+                           
+                               Height="35"
+                               Margin="0,0,0,0"
+                               Source="/HIO;component/Resources/1.png" 
+                               Stretch="Uniform"
+                               RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Viewbox>
+                </Grid>
+
+            </Grid>
+
+            <DockPanel LastChildFill="False"
+                       FocusManager.IsFocusScope="True"
+                       KeyboardNavigation.TabNavigation="Cycle"
+                       KeyboardNavigation.ControlTabNavigation="Cycle"
+                       KeyboardNavigation.DirectionalNavigation="Cycle">
+                <Ctrls:TSideBarButton DockPanel.Dock="Top" DataContext="{Binding AccountManager}" IsEnabled="{Binding IsEnabled}"/>
+                <Ctrls:TSideBarButton DockPanel.Dock="Top" DataContext="{Binding MagicLockManager}" IsEnabled="{Binding IsEnabled}"/>
+                <Ctrls:TSideBarButton DockPanel.Dock="Bottom" DataContext="{Binding SettingManager}" IsEnabled="{Binding IsEnabled}"/>
+                <Ctrls:TSideBarButton DockPanel.Dock="Bottom" DataContext="{Binding SecurityManager}" IsEnabled="{Binding IsEnabled}"/>
+            </DockPanel>
+            <!--<ItemsControl  ItemTemplate="{StaticResource TabBaseTemplate}" ItemsSource="{Binding TabManager.TopItems}" DockPanel.Dock="Top">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+            <ItemsControl ItemTemplate="{StaticResource TabBaseTemplate}" 
+                          ItemsSource="{Binding TabManager.BottomItems}" 
+                          DockPanel.Dock="Bottom">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>-->
+        </DockPanel>
+    </Border>
+</UserControl>

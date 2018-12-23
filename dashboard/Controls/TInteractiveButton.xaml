@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="HIO.Controls.TInteractiveButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HIO.Controls"
+             x:Name="Root"
+             mc:Ignorable="d" 
+             UseLayoutRounding="True"
+             d:DesignHeight="16" d:DesignWidth="16">
+
+    <Image x:Name="Img_Main" Stretch="Uniform"  RenderOptions.BitmapScalingMode="HighQuality"/>
+
+</UserControl>

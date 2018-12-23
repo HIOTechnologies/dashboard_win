@@ -1,0 +1,46 @@
+﻿<Ctrls:TWindow x:Class="HIO.Extentions.TExtentionMenuView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Ctrls="clr-namespace:HIO.Controls"
+        xmlns:local="clr-namespace:HIO.Extentions"
+        AllowShowMaximizeRestore="False"
+        AllowShowMinimize="False"
+        AllowShowClose="False"
+        ResizeMode="NoResize"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ShowActivated="True"
+        mc:Ignorable="d"
+        Title="Link" 
+               Height="266" Width="410">
+    <Ctrls:TWindow.Resources>
+        <Style TargetType="{x:Type Ctrls:TLinkButton}" BasedOn="{StaticResource DefaultLinkButtonStyle}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
+    </Ctrls:TWindow.Resources>
+    <Grid Margin="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5px"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5px"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Ctrls:TLinkButton Content="Add item" Command="{Binding Commands.AddItem}" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <Separator Background="{StaticResource HIOLineBright}" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Ctrls:TLinkButton Content="Generate secure password" Command="{Binding Commands.GenerateSecurePassword}" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <Separator Background="{StaticResource HIOLineBright}" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <Ctrls:TLinkButton Content="All items" Command="{Binding Commands.AllItems}" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <Separator Background="{StaticResource HIOLineBright}" Grid.Row="5" Grid.ColumnSpan="2"/>
+        <Ctrls:TLinkButton Content="Dashboard" Command="{Binding Commands.Dashboard}" Grid.Row="6" Grid.ColumnSpan="2"/>
+    </Grid>
+</Ctrls:TWindow>
