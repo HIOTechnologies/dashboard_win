@@ -1,1 +1,3 @@
-# dashboard_win
+# HIO Technologies
+In an increasingly interconnected world, HIO is an elegant yet intelligent device that offers a simple, dependable and most of all, smart solution to all your online and offline security concerns. As a physical and secure hardware-based password manager, it allows you to keep all your passwords offline, but easily shareable on multi-user environments. We have made sign-in secure and even much easier whereby you can log in simply by a click or double-tap.
+With Magic Lock and Hello features, HIO will enhance your experience on getting a safe and ease-of-use access to a shared or personal PC. It ensure your privacy by immediately locking your PC when you walk away, and unlocking your PC when you walk back using a standard password-less authentication solution.
