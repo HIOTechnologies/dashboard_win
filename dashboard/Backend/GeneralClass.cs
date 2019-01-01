@@ -158,6 +158,7 @@ namespace HIO.Backend
         public static string PATHMSGREC = @".\Private$\MSGHIO2" + System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\').Last();
         public static bool SYNC_ON = false;
         public static bool IMPORT_ON = false;
+        public static bool ISLOCK = false;
         public static readonly object Cmdlocker = new object();
         public static bool checkRec = false; //checking recieve packet from extention(flag)
         public static Double scale = 1; //scale monitor

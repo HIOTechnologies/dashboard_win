@@ -6,6 +6,7 @@ using HIO.ViewModels.Accounts;
 using HIO.ViewModels.MagicLock;
 using HIO.ViewModels.Security;
 using HIO.ViewModels.Settings;
+using Microsoft.Win32;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,7 +33,21 @@ namespace HIO.ViewModels
             //MagicLockManager.IsEnabled = false;
             //SecurityManager.IsEnabled = false;
 
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
 
+
+
+        }
+        public void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionLock)
+            {
+                HIOStaticValues.ISLOCK = true;
+            }
+            else
+            {
+                HIOStaticValues.ISLOCK = false;
+            }
         }
 
 

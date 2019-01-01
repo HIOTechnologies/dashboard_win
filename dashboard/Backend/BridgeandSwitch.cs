@@ -503,7 +503,8 @@ namespace HIO.Backend
                                 Trace.WriteLine("******* CheckSwitchEvent");
                                 break;
                             case 0x80: //lock
-                                LockWorkStation();
+                                if (!HIOStaticValues.ISLOCK)
+                                    LockWorkStation();
                                 break;
 
                         }
